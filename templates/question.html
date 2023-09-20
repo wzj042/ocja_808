@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Question</title>
+    <link rel="shortcut icon" href="../img/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/question.css">
+    <link rel="stylesheet" href="../lib/material-darker.css">
+    <link rel="stylesheet" href="../lib/codemirror.css">
+    <script src="../lib/codemirror.js"></script>
+    <script src="../lib/clike.js"></script>
+    <style>
+        .CodeMirror {
+            height: auto;
+            width: auto;
+            font-size: x-large;
+        }
+    </style>
+    <script type="text/javascript" src="../js/question.js"></script>
+</head>
+
+<body>
+    <div class="toolbar">
+        <div class="title">Readonly</div>
+        <div class="action-buttons">
+            <div title="tab" class="status-button"><i class="fa fa-eye"></i></div>
+        </div>
+    </div>
+
+    <main>
+
+        <div class="container">
+            <!-- 显示题目标题-->
+            <textarea type="text" id="title-input" placeholder="输入问题标题" value="问题标题" readonly></textarea>
+
+            <!-- 显示题目内容代码块，选项 -->
+            <textarea placeholder="code" id="code" name="code"></textarea>
+
+            <div class="question-list">
+                <!-- 显示一个答案选项 -->
+                <div class="question-card">
+                    <span class="highlight">A.</span>
+                    <textarea placeholder="option" id="option1" name="option">选项A</textarea>
+                </div>
+            </div>
+            <button title="alt" class="fab">
+                <!-- 默认是新建问题按钮，修改模式下修改为保存 -->
+                <i class="fa fa-plus"></i>
+            </button>
+            <div class="analysis-card">
+                <!-- 显示解析卡片 -->
+                <textarea placeholder="输入解析" type="text" id="analysis-input" name="analysis"></textarea>
+            </div>
+        </div>
+        <!-- 弹窗modal，包括.record-list显示记录列表，包含一个按钮关闭弹窗 -->
+        <div class="modal">
+            <div class="modal-content">
+                <!-- 显示记录列表 -->
+                <ul class="record-list">
+                    <li><span class="highlight">[已结束]</span> - 正确率: 42% 42/100 - 2023/04/02 03:00:00</li>
+                </ul>
+            </div>
+        </div>
+    </main>
+
+    <div class="footbar">
+        <div class="normal-mode">
+            <button title="space" class="tab-button" id="quiz-analysis-btn">解析</button>
+            <button title="commit" class="tab-button" id='back-index-btn'>主页</button>
+            <button title="double-control" class="tab-button" id="random-quiz-btn">随机</button>
+            <button title="9" class="tab-button" id="test-info-btn">记录</button>
+            <button title="enter | 0" class="tab-button" id="submit-quiz-btn">确认</button>
+        </div>
+        <div class="edit-mode" style="display: none;">
+            <button title="commit" class="tab-button" id="export-json-btn">导出json</button>
+            <button title="commit" class="tab-button" id='del-quiz-btn'>删除该题</button>
+            <button title="commit" class="tab-button" id="remove-last-btn">删除末项</button>
+            <button title="commit" class="tab-button" id="add-option-btn">新增选项</button>
+        </div>
+        
+    </div>
+</body>
+
+</html>
